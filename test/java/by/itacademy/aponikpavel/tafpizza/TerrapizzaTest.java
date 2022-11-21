@@ -1,8 +1,8 @@
 package by.itacademy.aponikpavel.tafpizza;
 
-import dev.failsafe.internal.util.Assert;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -44,6 +44,15 @@ public class TerrapizzaTest {
         By byPizzaMargaritaInOrder = By.xpath(xPathPizzaMargaritaInOrder);
         WebElement webElementPizzaMargaritaInOrder = driver.findElement(byPizzaMargaritaInOrder);
         String actual = webElementButtonPizzaMargaritaAddInOrder.getText();
+
+        Assertions.assertEquals(expected, actual);
+        driver.quit();
+
+
+
+
+
+
 
 
 
