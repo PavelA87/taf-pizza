@@ -3,46 +3,43 @@ package by.itacademy.aponikpavel.tafpizza;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TerrapizzaTest {
     @Test
     public void testTerrapizzaAddInOrder() {
 
-        TerrapizzaPage terrapizzaPage = new TerrapizzaPage();
-
         WebDriverManager.chromedriver().setup();
         ChromeDriver driver = new ChromeDriver();
-        driver.get(terrapizzaPage.url);
+        TerrapizzaPage terrapizzaPage = new TerrapizzaPage(driver);
+        driver.get(terrapizzaPage.URL);
         Util.waiter();
 
         driver.manage().window().maximize();
         Util.waiter();
 
-        terrapizzaPage.clickCloseCookies(driver);
+        terrapizzaPage.clickCloseCookies();
         Util.waiter();
 
-        terrapizzaPage.clickButtonMenu(driver);
+        terrapizzaPage.clickButtonMenu();
         Util.waiter();
 
-        terrapizzaPage.clickButtonPizza(driver);
+        terrapizzaPage.clickButtonPizza();
         Util.waiter();
 
-        terrapizzaPage.clickButtonPizzaMargaritaAddInOrder(driver);
+        terrapizzaPage.clickButtonPizzaMargaritaAddInOrder();
         Util.waiter();
 
-        driver.get(terrapizzaPage.url);
+        driver.get(terrapizzaPage.URL);
         Util.waiter();
 
-        terrapizzaPage.clickButtonOrder(driver);
+        terrapizzaPage.clickButtonOrder();
         Util.waiter();
 
-        String actual = terrapizzaPage.getTextPizzaMargaritaFromOrder(driver);
+        String actual = terrapizzaPage.getTextPizzaMargaritaFromOrder();
         Util.waiter();
 
-        Assertions.assertEquals(terrapizzaPage.expected, actual);
+        Assertions.assertEquals(terrapizzaPage.EXPECTED, actual);
         driver.quit();
 
     }
